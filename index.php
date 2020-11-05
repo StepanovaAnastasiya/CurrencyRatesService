@@ -52,12 +52,19 @@ function viewExchange() {
 }
 
 function viewHistory() {
+    if(isset($_SESSION['limit'])){
+        $limit = $_SESSION['limit'];
+    }
     $historyItems = History::getList();
     require( "templates/historyView.php" );
 }
 
 function viewSettings() {
     $currencies = ExchangeRates::getCurrencies();    
+     if (isset($_POST['submitLimit'])) {       
+     $_SESSION['limit'] = htmlspecialchars($_POST['limit']);    
+    }    
+    
      if (isset($_POST['submit'])) {       
      $_SESSION['settingsCurrencies'] = $_POST;    
     }    

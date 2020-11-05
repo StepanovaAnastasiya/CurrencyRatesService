@@ -47,9 +47,13 @@ class History {
         $connection = null;
     }
 
-    public static function getList() {        
+    public static function getList() {          
+        $limit = "4";
+        if(isset($_SESSION['limit'])){
+        $limit = $_SESSION['limit'];
+        }
         $connection = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-        $sql = "SELECT *, UNIX_TIMESTAMP(datetime) AS datetimeUnix FROM history ORDER BY datetimeUnix DESC LIMIT 5";
+        $sql = "SELECT *, UNIX_TIMESTAMP(datetime) AS datetimeUnix FROM history ORDER BY datetimeUnix DESC LIMIT ".$limit;
         $st = $connection->prepare($sql);
         $st->execute();
         $list = [];
