@@ -21,7 +21,7 @@
             if (isset($_SESSION['settingsCurrencies']) && ($_SESSION['settingsCurrencies'][$k] == NULL)) {
                 $checked = "";
             }
-            echo '<input type="checkbox" name=' . $k . ' value="1"' . $checked . '>' . $currency ;
+            echo '<p><input type="checkbox" name=' . $k . ' value="1"' . $checked . '>' . $currency .'</p>';
         }
         ?>       
         <p><input type="submit" name="submit" value="Обрати"></p>
